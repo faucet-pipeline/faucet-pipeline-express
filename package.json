@@ -1,0 +1,24 @@
+{
+	"name": "faucet-pipeline-express",
+	"version": "1.0.0",
+	"description": "express adapter for faucet-pipeline",
+	"author": "Lucas Dohmen <lucas@dohmen.io> (https://lucas.dohmen.io)",
+	"license": "Apache-2.0",
+	"homepage": "https://www.faucet-pipeline.org",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline-express.git"
+	},
+	"bugs": {
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline-express/issues"
+	},
+	"main": "index.js",
+	"scripts": {
+		"test": "eslint --cache *.js && echo ✓"
+	},
+	"devDependencies": {
+		"eslint-config-fnd": "^1.6.0",
+		"express": "^4.16.4",
+		"pug": "^2.0.3"
+	}
+}
