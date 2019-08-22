@@ -1,12 +1,12 @@
 let express = require("express");
 let path = require("path");
-let faucet = require(".");
+let faucet = require("..");
 
 let app = express();
 app.set("view engine", "pug");
 app.set("views", [path.join(__dirname, "views")]);
 
-app.use(faucet.middleware("./manifest.json"));
+app.use(faucet.middleware(path.join(__dirname, "./manifest.json")));
 
 app.get("/", (req, res) => {
 	res.render("index");

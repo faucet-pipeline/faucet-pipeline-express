@@ -28,7 +28,7 @@ class ManifestError extends Error {
 exports.ManifestError = ManifestError;
 
 function lookup(manifest, identifier) {
-	if(manifest.hasOwnProperty(identifier)) {
+	if(Object.prototype.hasOwnProperty.call(manifest, identifier)) {
 		return manifest[identifier];
 	} else {
 		throw new ManifestError(`Could not find ${identifier} in the manifest`);
