@@ -10,7 +10,7 @@ exports.middleware = (manifestPath, { caching } = {}) => {
 	// we load the manifest here so we get an error early if the
 	// manifest is not readable/parseable
 	// we do it synchronous, because we don't want to await the middleware
-	let manifest = loadJSONSync(manifestPath);
+	let manifest = require(manifestPath);
 
 	return async (req, res, next) => {
 		// if caching is disabled, refresh the manifest once per request
@@ -33,12 +33,6 @@ function lookup(manifest, identifier) {
 	} else {
 		throw new ManifestError(`Could not find ${identifier} in the manifest`);
 	}
-}
-
-function loadJSONSync(filePath) {
-	let raw = fs.readFileSync(filePath);
-	let parsed = JSON.parse(raw);
-	return parsed;
 }
 
 async function loadJSON(filePath) {
