@@ -7,14 +7,13 @@ let PRODUCTION = process.env.NODE_ENV === "production";
 exports.middleware = (manifestPath, { caching = PRODUCTION } = {}) => {
 	// we load the manifest here so we get an error early if the
 	// manifest is not readable/parseable
-	// we do it synchronous, because we don't want to await the middleware
+	// we do it synchronously because we don't want to await the middleware
 	let manifest = require(manifestPath);
 
 	let assetURL = identifier => lookup(manifest, identifier);
 
 	return async (req, res, next) => {
-		// if caching is disabled, refresh the manifest once per request
-		if(!caching) {
+		if(!caching) { // refresh the manifest once per request
 			manifest = await loadJSON(manifestPath);
 		}
 		req.app.locals.assetURL = assetURL;
