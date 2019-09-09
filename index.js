@@ -2,22 +2,22 @@ let util = require("util");
 let fs = require("fs");
 let readFile = util.promisify(fs.readFile);
 
-exports.middleware = (manifestPath, { caching } = {}) => {
-	if(caching === undefined) {
-		caching = (process.env.NODE_ENV === "production");
-	}
+let PRODUCTION = process.env.NODE_ENV === "production";
 
+exports.middleware = (manifestPath, { caching = PRODUCTION } = {}) => {
 	// we load the manifest here so we get an error early if the
 	// manifest is not readable/parseable
 	// we do it synchronous, because we don't want to await the middleware
 	let manifest = require(manifestPath);
+
+	let assetURL = identifier => lookup(manifest, identifier);
 
 	return async (req, res, next) => {
 		// if caching is disabled, refresh the manifest once per request
 		if(!caching) {
 			manifest = await loadJSON(manifestPath);
 		}
-		req.app.locals.assetURL = identifier => lookup(manifest, identifier);
+		req.app.locals.assetURL = assetURL;
 		next();
 	};
 };
@@ -37,6 +37,5 @@ function lookup(manifest, identifier) {
 
 async function loadJSON(filePath) {
 	let raw = await readFile(filePath);
-	let parsed = JSON.parse(raw);
-	return parsed;
+	return JSON.parse(raw);
 }
