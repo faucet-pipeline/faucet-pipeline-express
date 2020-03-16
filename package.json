@@ -20,6 +20,6 @@
 		"eslint-config-fnd": "^1.7.0",
 		"express": "^4.17.1",
 		"pug": "^2.0.4",
-		"release-util-fnd": "^1.1.1"
+		"release-util-fnd": "^2.0.0"
 	}
 }
