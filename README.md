@@ -1,7 +1,5 @@
 # faucet-pipeline-express
 [![npm](https://img.shields.io/npm/v/faucet-pipeline-express.svg)](https://www.npmjs.com/package/faucet-pipeline-express)
-[![Build Status](https://travis-ci.org/faucet-pipeline/faucet-pipeline-express.svg?branch=master)](https://travis-ci.org/faucet-pipeline/faucet-pipeline-express)
-[![Greenkeeper badge](https://badges.greenkeeper.io/faucet-pipeline/faucet-pipeline-express.svg)](https://greenkeeper.io)
 
 This is a middleware for Express to read the manifest file from faucet-pipeline
 and get access to it in your views. Initialize it with:
