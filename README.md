@@ -1,27 +1,6 @@
 # faucet-pipeline-express
-[![npm](https://img.shields.io/npm/v/faucet-pipeline-express.svg)](https://www.npmjs.com/package/faucet-pipeline-express)
 
-This is a middleware for Express to read the manifest file from faucet-pipeline
-and get access to it in your views. Initialize it with:
+We decided to deprecate this package, as we don't use it ourselves, and don't
+know anyone using it.
 
-```js
-let faucet = require('faucet-pipeline-express');
-
-// ...
-
-app.use(faucet.middleware("./path-to-manifest.json"));
-```
-
-Inside your views you now have access to the assetURL function to read from your
-manifest:
-
-```pug
-head
-    link(href=assetURL("assets/foo.css") rel="stylesheet" media="all")
-```
-
-See the `example` directory for a usage example with express and pug.
-
-## License
-
-faucet-pipeline-express is licensed under Apache 2.0 License.
+If you are still using it, please feel free to reach out to us.
